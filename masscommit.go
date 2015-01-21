@@ -30,11 +30,11 @@ func main() {
 	}
 
 	for i := 1; i <= ncommits; i++ {
-		file, err := os.OpenFile(file_name, os.O_RDWR, 0666)
+		file, err := os.OpenFile(file_name, os.O_WRONLY|os.O_APPEND, 0660)
 		if os.IsNotExist(err) {
 			log.Fatal("File does not exist.\n")
 		}
-		file.Seek(0, 2)
+		//		file.Seek(0, 2)
 		file.WriteString(fmt.Sprint("Edit number ", i, "\n"))
 		file.Close()
 
